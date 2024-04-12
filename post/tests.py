@@ -51,7 +51,13 @@ class PostDetailViewTests(APITestCase):
 
   def test_user_can_update_own_post(self):
     self.client.login(username='adam', password='pass')
-    post = Post.objects.filter(pk=1).first()
     response = self.client.put('/posts/1/', {'title': 'a new title'})
-    self.assertEqual(post.title, 'a new title')
+    posts = Post.objects.filter(pk=1).first()
+    self.assertEqual(posts.title, 'a new title')
     self.assertEqual(response.status_code, status.HTTP_200_OK)
+  
+  
+  def test_user_can_update_another_users_post(self):
+    self.client.login(username='adam', password='pass')
+    response = self.client.put('/posts/2/', {'title': 'a new title'})
+    self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
