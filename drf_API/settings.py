@@ -64,6 +64,7 @@ ALLOWED_HOSTS = [
     os.environ.get('ALLOWED_HOST'),
     'localhost',
     '8000-haloegen-djangoresttest-ojwl8teypch.ws-eu110.gitpod.io',
+    'djangoresttest-66572e42c03c.herokuapp.com'
 
 ]
 
