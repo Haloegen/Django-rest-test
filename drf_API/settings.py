@@ -9,11 +9,11 @@ https://docs.djangoproject.com/en/3.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
-
+import re
 from pathlib import Path
 import os
 import dj_database_url
-import re
+
 
 if os.path.exists('env.py'):
     import env
@@ -66,8 +66,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = 'DEV' in os.environ
 
-ALLOWED_HOSTS = ['localhost', os.environ.get('ALLOWED_HOST'), 'djangoresttest.herokuapp.com'
-, '8000-haloegen-djangoresttest-ojwl8teypch.ws-eu110.gitpod.io']
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOST'), 'localhost',  '8000-haloegen-djangoresttest-ojwl8teypch.ws-eu110.gitpod.io']
 
 
 # Application definition
